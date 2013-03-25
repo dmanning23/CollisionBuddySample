@@ -1,0 +1,12 @@
+[submodule "externals/CollisionBuddy"]
+	path = externals/CollisionBuddy
+	url = https://github.com/dmanning23/CollisionBuddy.git
+[submodule "externals/HadoukInput"]
+	path = externals/HadoukInput
+	url = https://github.com/dmanning23/HadoukInput.git
+[submodule "externals/BasicPrimitiveBuddy"]
+	path = externals/BasicPrimitiveBuddy
+	url = https://github.com/dmanning23/BasicPrimitiveBuddy.git
+[submodule "externals/GameTimer"]
+	path = externals/GameTimer
+	url = https://github.com/dmanning23/GameTimer.git
