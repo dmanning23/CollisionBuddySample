@@ -97,8 +97,6 @@ namespace CircleRectTest
 			if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
 				this.Exit();
 
-			// TODO: Add your update logic here
-			
 			//update the timer
 			_clock.Update(gameTime);
 			
@@ -107,8 +105,32 @@ namespace CircleRectTest
 			_inputWrapper.Update(_inputState, false);
 
 			//move the circle
+			float movespeed = 200.0f;
+			if (_inputWrapper.Controller.KeystrokeHeld[(int)EKeystroke.Up])
+			{
+				_circle.Translate(0.0f, -movespeed * _clock.TimeDelta);
+			}
+			else if (_inputWrapper.Controller.KeystrokeHeld[(int)EKeystroke.Down])
+			{
+				_circle.Translate(0.0f, movespeed * _clock.TimeDelta);
+			}
+			else if (_inputWrapper.Controller.KeystrokeHeld[(int)EKeystroke.Forward])
+			{
+				_circle.Translate(movespeed * _clock.TimeDelta, 0.0f);
+			}
+			else if (_inputWrapper.Controller.KeystrokeHeld[(int)EKeystroke.Back])
+			{
+				_circle.Translate(-movespeed * _clock.TimeDelta, 0.0f);
+			}
 
 			//put the circle back in the box?
+			Vector2 overlap = Vector2.Zero;
+			Vector2 collisionPoint = Vector2.Zero;
+			if (CollisionCheck.CircleRectCollision(_circle, _box, ref collisionPoint, ref overlap))
+			{
+				//move the circle by the overlap
+				_circle.Translate(overlap);
+			}
 
 			base.Update(gameTime);
 		}
@@ -121,13 +143,13 @@ namespace CircleRectTest
 		{
 			GraphicsDevice.Clear(Color.CornflowerBlue);
 
-			// TODO: Add your drawing code here
 			spriteBatch.Begin();
 
-			//draw all our primitives
+			//draw the circle
 			BasicPrimitive circlePrim = new BasicPrimitive(graphics.GraphicsDevice);
 			circlePrim.Circle(_circle.Pos, _circle.Radius, Color.Red, spriteBatch);
 
+			//darw the rectangle
 			BasicPrimitive rectPrim = new BasicPrimitive(graphics.GraphicsDevice);
 			rectPrim.AxisAlignedBox(new Vector2(_box.Left, _box.Top),
 				new Vector2(_box.Right, _box.Bottom), 
