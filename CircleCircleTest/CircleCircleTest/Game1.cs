@@ -2,26 +2,29 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.GamerServices;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Media;
 using BasicPrimitiveBuddy;
 using CollisionBuddy;
 using GameTimer;
 using HadoukInput;
 
-namespace CircleRectTest
+namespace CircleCircleTest
 {
 	/// <summary>
-	/// This is the main type for your game
+	/// This "game" puts two circles on teh screen and tests the collision detection.
 	/// </summary>
 	public class Game1 : Microsoft.Xna.Framework.Game
 	{
 		GraphicsDeviceManager graphics;
 		SpriteBatch spriteBatch;
 
-		Circle _circle;
-		Rectangle _box;
+		Circle _circle1;
+		Circle _circle2;
 
 		GameClock _clock;
 
@@ -33,8 +36,8 @@ namespace CircleRectTest
 			graphics = new GraphicsDeviceManager(this);
 			Content.RootDirectory = "Content";
 
-			_circle = new Circle();
-			_box = new Rectangle();
+			_circle1 = new Circle();
+			_circle2 = new Circle();
 
 			_clock = new GameClock();
 			_inputState = new InputState();
@@ -49,15 +52,12 @@ namespace CircleRectTest
 		/// </summary>
 		protected override void Initialize()
 		{
-			//init our box somewhere we can see it
-			_box = graphics.GraphicsDevice.Viewport.TitleSafeArea;
-			_box.X += 100;
-			_box.Width -= 200;
-			_box.Y += 100;
-			_box.Height -= 200;
+			//init the blue circle so it will be on the left of the screen
+			_circle1.Initialize(new Vector2(graphics.GraphicsDevice.Viewport.TitleSafeArea.Center.X - 300,
+				graphics.GraphicsDevice.Viewport.TitleSafeArea.Center.Y), 80.0f);
 
-			//init the circle so it will be in the middle of the box
-			_circle.Initialize(graphics.GraphicsDevice.Viewport.TitleSafeArea.Center, 80.0f);
+			//put the red circle on the right of the screen
+			_circle2.Initialize(graphics.GraphicsDevice.Viewport.TitleSafeArea.Center, 80.0f);
 
 			_clock.Start();
 
@@ -95,37 +95,28 @@ namespace CircleRectTest
 
 			//update the timer
 			_clock.Update(gameTime);
-			
+
 			//update the input
 			_inputState.Update();
 			_inputWrapper.Update(_inputState, false);
 
 			//move the circle
-			float movespeed = 20000.0f;
+			float movespeed = 2000.0f;
 			if (_inputWrapper.Controller.KeystrokeHeld[(int)EKeystroke.Up])
 			{
-				_circle.Translate(0.0f, -movespeed * _clock.TimeDelta);
+				_circle1.Translate(0.0f, -movespeed * _clock.TimeDelta);
 			}
 			else if (_inputWrapper.Controller.KeystrokeHeld[(int)EKeystroke.Down])
 			{
-				_circle.Translate(0.0f, movespeed * _clock.TimeDelta);
+				_circle1.Translate(0.0f, movespeed * _clock.TimeDelta);
 			}
 			else if (_inputWrapper.Controller.KeystrokeHeld[(int)EKeystroke.Forward])
 			{
-				_circle.Translate(movespeed * _clock.TimeDelta, 0.0f);
+				_circle1.Translate(movespeed * _clock.TimeDelta, 0.0f);
 			}
 			else if (_inputWrapper.Controller.KeystrokeHeld[(int)EKeystroke.Back])
 			{
-				_circle.Translate(-movespeed * _clock.TimeDelta, 0.0f);
-			}
-
-			//put the circle back in the box?
-			Vector2 overlap = Vector2.Zero;
-			Vector2 collisionPoint = Vector2.Zero;
-			if (CollisionCheck.CircleRectCollision(_circle, _box, ref collisionPoint, ref overlap))
-			{
-				//move the circle by the overlap
-				_circle.Translate(overlap);
+				_circle1.Translate(-movespeed * _clock.TimeDelta, 0.0f);
 			}
 
 			base.Update(gameTime);
@@ -139,18 +130,23 @@ namespace CircleRectTest
 		{
 			GraphicsDevice.Clear(Color.CornflowerBlue);
 
+			//draw the circles green...
+			Color circleColor = Color.Green;
+
+			//...unless a collision is occuring, in which case draw the circles in red.
+			if (CollisionCheck.CircleCircleCollision(_circle2, _circle1))
+			{
+				circleColor = Color.Red;
+			}
+
 			spriteBatch.Begin();
 
-			//draw the circle
+			//draw the circles
 			BasicPrimitive circlePrim = new BasicPrimitive(graphics.GraphicsDevice);
-			circlePrim.Circle(_circle.Pos, _circle.Radius, Color.Red, spriteBatch);
+			circlePrim.Circle(_circle1.Pos, _circle1.Radius, circleColor, spriteBatch);
 
-			//darw the rectangle
-			BasicPrimitive rectPrim = new BasicPrimitive(graphics.GraphicsDevice);
-			rectPrim.AxisAlignedBox(new Vector2(_box.Left, _box.Top),
-				new Vector2(_box.Right, _box.Bottom), 
-				Color.White,
-				spriteBatch);
+			circlePrim = new BasicPrimitive(graphics.GraphicsDevice);
+			circlePrim.Circle(_circle2.Pos, _circle2.Radius, circleColor, spriteBatch);
 
 			spriteBatch.End();
 

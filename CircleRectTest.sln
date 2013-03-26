@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual C# Express 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CircleRectTest", "CircleRectTest\CircleRectTest\CircleRectTest.csproj", "{1919AE0C-E4A5-41F6-A488-40234AB63C6A}"
 EndProject
-Project("{96E2B04D-8817-42C6-938A-82C39BA4D311}") = "CircleRectTestContent", "CircleRectTest\CircleRectTestContent\CircleRectTestContent.contentproj", "{507FED61-75AF-444A-95E0-71F1C9A41A4A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CircleRectTestContent", "CircleRectTest\CircleRectTestContent\CircleRectTestContent.contentproj", "{507FED61-75AF-444A-95E0-71F1C9A41A4A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CollisionBuddy", "externals\CollisionBuddy\CollisionBuddy.csproj", "{3EB0132F-9AAF-465C-8E7C-8880BBE6D600}"
 EndProject
@@ -12,6 +12,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BasicPrimitiveBuddy", "externals\BasicPrimitiveBuddy\BasicPrimitiveBuddy\BasicPrimitiveBuddy.csproj", "{3523FC5D-C708-4AFE-A751-CEFA75C57717}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameTimer", "externals\GameTimer\GameTimer\GameTimer.csproj", "{34F0272D-BBF9-4996-8EA4-B231872A28AF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CircleCircleTest", "CircleCircleTest\CircleCircleTest\CircleCircleTest.csproj", "{C7EC8AC5-6EFD-4F0A-B6E7-5C2C9F00B9F8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -79,6 +81,16 @@ Global
 		{34F0272D-BBF9-4996-8EA4-B231872A28AF}.Release|Mixed Platforms.Build.0 = Release|x86
 		{34F0272D-BBF9-4996-8EA4-B231872A28AF}.Release|x86.ActiveCfg = Release|x86
 		{34F0272D-BBF9-4996-8EA4-B231872A28AF}.Release|x86.Build.0 = Release|x86
+		{C7EC8AC5-6EFD-4F0A-B6E7-5C2C9F00B9F8}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{C7EC8AC5-6EFD-4F0A-B6E7-5C2C9F00B9F8}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{C7EC8AC5-6EFD-4F0A-B6E7-5C2C9F00B9F8}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{C7EC8AC5-6EFD-4F0A-B6E7-5C2C9F00B9F8}.Debug|x86.ActiveCfg = Debug|x86
+		{C7EC8AC5-6EFD-4F0A-B6E7-5C2C9F00B9F8}.Debug|x86.Build.0 = Debug|x86
+		{C7EC8AC5-6EFD-4F0A-B6E7-5C2C9F00B9F8}.Release|Any CPU.ActiveCfg = Release|x86
+		{C7EC8AC5-6EFD-4F0A-B6E7-5C2C9F00B9F8}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{C7EC8AC5-6EFD-4F0A-B6E7-5C2C9F00B9F8}.Release|Mixed Platforms.Build.0 = Release|x86
+		{C7EC8AC5-6EFD-4F0A-B6E7-5C2C9F00B9F8}.Release|x86.ActiveCfg = Release|x86
+		{C7EC8AC5-6EFD-4F0A-B6E7-5C2C9F00B9F8}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
