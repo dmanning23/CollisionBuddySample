@@ -101,7 +101,7 @@ namespace CircleCircleTest
 			_inputWrapper.Update(_inputState, false);
 
 			//move the circle
-			float movespeed = 2000.0f;
+			float movespeed = 200.0f;
 			if (_inputWrapper.Controller.KeystrokeHeld[(int)EKeystroke.Up])
 			{
 				_circle1.Translate(0.0f, -movespeed * _clock.TimeDelta);
