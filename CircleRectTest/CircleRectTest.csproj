@@ -87,20 +87,20 @@
       </Target>
     -->
   <ItemGroup>
-    <ProjectReference Include="..\..\externals\BasicPrimitiveBuddy\BasicPrimitiveBuddy\BasicPrimitiveBuddy.Windows.csproj">
-      <Project>{3523FC5D-C708-4AFE-A751-CEFA75C57717}</Project>
+    <ProjectReference Include="..\externals\BasicPrimitiveBuddy\Windows\BasicPrimitiveBuddy.Windows.csproj">
+      <Project>{0FAA1286-7BFA-4765-8B51-62E438CB121D}</Project>
       <Name>BasicPrimitiveBuddy.Windows</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\externals\CollisionBuddy\CollisionBuddy\CollisionBuddy.Windows.csproj">
-      <Project>{3EB0132F-9AAF-465C-8E7C-8880BBE6D600}</Project>
+    <ProjectReference Include="..\externals\CollisionBuddy\Windows\CollisionBuddy.Windows.csproj">
+      <Project>{E032CF52-88BC-4D76-8E93-3798F5EE5CD2}</Project>
       <Name>CollisionBuddy.Windows</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\externals\GameTimer\GameTimer\GameTimer.Windows.csproj">
-      <Project>{34F0272D-BBF9-4996-8EA4-B231872A28AF}</Project>
+    <ProjectReference Include="..\externals\GameTimer\Windows\GameTimer.Windows.csproj">
+      <Project>{6B6D4188-5C03-4E16-923B-96FDBC85B91A}</Project>
       <Name>GameTimer.Windows</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\externals\HadoukInput\HadoukInput\HadoukInput.Windows.csproj">
-      <Project>{F5CC3080-2D60-421C-9593-C520C58C5507}</Project>
+    <ProjectReference Include="..\externals\HadoukInput\Windows\HadoukInput.Windows.csproj">
+      <Project>{85D723F7-83EF-4C75-82BA-9385D0AC8448}</Project>
       <Name>HadoukInput.Windows</Name>
     </ProjectReference>
   </ItemGroup>
