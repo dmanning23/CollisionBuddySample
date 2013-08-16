@@ -42,6 +42,7 @@ namespace CircleCircleTest
 			_clock = new GameClock();
 			_inputState = new InputState();
 			_inputWrapper = new InputWrapper(PlayerIndex.One, _clock.GetCurrentTime);
+			_inputWrapper.Controller.UseKeyboard = true;
 		}
 
 		/// <summary>
@@ -101,7 +102,7 @@ namespace CircleCircleTest
 			_inputWrapper.Update(_inputState, false);
 
 			//move the circle
-			float movespeed = 200.0f;
+			float movespeed = 3200.0f;
 			if (_inputWrapper.Controller.KeystrokeHeld[(int)EKeystroke.Up])
 			{
 				_circle1.Translate(0.0f, -movespeed * _clock.TimeDelta);
