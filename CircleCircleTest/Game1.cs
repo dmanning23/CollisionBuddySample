@@ -146,11 +146,9 @@ namespace CircleCircleTest
 			spriteBatch.Begin();
 
 			//draw the circles
-			BasicPrimitive circlePrim = new BasicPrimitive(graphics.GraphicsDevice);
-			circlePrim.Circle(_circle1.Pos, _circle1.Radius, circleColor, spriteBatch);
-
-			circlePrim = new BasicPrimitive(graphics.GraphicsDevice);
-			circlePrim.Circle(_circle2.Pos, _circle2.Radius, circleColor, spriteBatch);
+			XNABasicPrimitive circlePrim = new XNABasicPrimitive(graphics.GraphicsDevice, spriteBatch);
+			circlePrim.Circle(_circle1.Pos, _circle1.Radius, circleColor);
+			circlePrim.Circle(_circle2.Pos, _circle2.Radius, circleColor);
 
 			spriteBatch.End();
 

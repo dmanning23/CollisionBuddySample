@@ -39,6 +39,7 @@ namespace CircleRectTest
 			_clock = new GameClock();
 			_inputState = new InputState();
 			_inputWrapper = new InputWrapper(PlayerIndex.One, _clock.GetCurrentTime);
+			_inputWrapper.Controller.UseKeyboard = true;
 		}
 
 		/// <summary>
@@ -142,15 +143,12 @@ namespace CircleRectTest
 			spriteBatch.Begin();
 
 			//draw the circle
-			BasicPrimitive circlePrim = new BasicPrimitive(graphics.GraphicsDevice);
-			circlePrim.Circle(_circle.Pos, _circle.Radius, Color.Red, spriteBatch);
+			XNABasicPrimitive circlePrim = new XNABasicPrimitive(graphics.GraphicsDevice, spriteBatch);
+			circlePrim.Circle(_circle.Pos, _circle.Radius, Color.Red);
 
 			//darw the rectangle
-			BasicPrimitive rectPrim = new BasicPrimitive(graphics.GraphicsDevice);
-			rectPrim.AxisAlignedBox(new Vector2(_box.Left, _box.Top),
-				new Vector2(_box.Right, _box.Bottom), 
-				Color.White,
-				spriteBatch);
+			XNABasicPrimitive rectPrim = new XNABasicPrimitive(graphics.GraphicsDevice, spriteBatch);
+			rectPrim.Rectangle(_box, Color.White);
 
 			spriteBatch.End();
 
