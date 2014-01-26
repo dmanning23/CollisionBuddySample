@@ -38,7 +38,7 @@ namespace CircleRectTest
 
 			_clock = new GameClock();
 			_inputState = new InputState();
-			_inputWrapper = new InputWrapper(PlayerIndex.One, _clock.GetCurrentTime);
+			_inputWrapper = new InputWrapper(new ControllerWrapper(PlayerIndex.One, true), _clock.GetCurrentTime);
 			_inputWrapper.Controller.UseKeyboard = true;
 		}
 
@@ -103,19 +103,19 @@ namespace CircleRectTest
 
 			//move the circle
 			float movespeed = 20000.0f;
-			if (_inputWrapper.Controller.KeystrokeHeld[(int)EKeystroke.Up])
+			if (_inputWrapper.Controller.CheckKeystroke(EKeystroke.Up, false, Vector2.UnitX))
 			{
 				_circle.Translate(0.0f, -movespeed * _clock.TimeDelta);
 			}
-			else if (_inputWrapper.Controller.KeystrokeHeld[(int)EKeystroke.Down])
+			else if (_inputWrapper.Controller.CheckKeystroke(EKeystroke.Down, false, Vector2.UnitX))
 			{
 				_circle.Translate(0.0f, movespeed * _clock.TimeDelta);
 			}
-			else if (_inputWrapper.Controller.KeystrokeHeld[(int)EKeystroke.Forward])
+			else if (_inputWrapper.Controller.CheckKeystroke(EKeystroke.Forward, false, Vector2.UnitX))
 			{
 				_circle.Translate(movespeed * _clock.TimeDelta, 0.0f);
 			}
-			else if (_inputWrapper.Controller.KeystrokeHeld[(int)EKeystroke.Back])
+			else if (_inputWrapper.Controller.CheckKeystroke(EKeystroke.Back, false, Vector2.UnitX))
 			{
 				_circle.Translate(-movespeed * _clock.TimeDelta, 0.0f);
 			}
