@@ -1,32 +1,40 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Content;
-using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
 using BasicPrimitiveBuddy;
 using CollisionBuddy;
 using GameTimer;
 using HadoukInput;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
+using Vector2Extensions;
 
 namespace CircleRectTest
 {
 	/// <summary>
-	/// This is the main type for your game
+	/// This is a quick sample game to show how to use the circle-rect collision functionality of the CollisionBuddy
+	/// There is a circle in a box, and it will stay in the box no matter how fast it moves.
+	/// This shows the tunneling prevention of teh collision
 	/// </summary>
 	public class Game1 : Microsoft.Xna.Framework.Game
 	{
+		#region Properties
+
+		#region boilerplate stuff
+
 		GraphicsDeviceManager graphics;
 		SpriteBatch spriteBatch;
+		GameClock _clock;
+		InputState _inputState;
+		InputWrapper _inputWrapper;
 
+		#endregion //boilerplate stuff
+
+		/// <summary>
+		/// This is the circle that will be used to check for 
+		/// </summary>
 		Circle _circle;
 		Rectangle _box;
 
-		GameClock _clock;
-
-		InputState _inputState;
-		InputWrapper _inputWrapper;
+		#endregion //Properties
 
 		public Game1()
 		{
@@ -58,7 +66,7 @@ namespace CircleRectTest
 			_box.Height -= 200;
 
 			//init the circle so it will be in the middle of the box
-			_circle.Initialize(graphics.GraphicsDevice.Viewport.TitleSafeArea.Center, 80.0f);
+			_circle.Initialize(graphics.GraphicsDevice.Viewport.TitleSafeArea.Center.ToVector2(), 80.0f);
 
 			_clock.Start();
 
@@ -73,14 +81,6 @@ namespace CircleRectTest
 		{
 			// Create a new SpriteBatch, which can be used to draw textures.
 			spriteBatch = new SpriteBatch(GraphicsDevice);
-		}
-
-		/// <summary>
-		/// UnloadContent will be called once per game and is the place to unload
-		/// all content.
-		/// </summary>
-		protected override void UnloadContent()
-		{
 		}
 
 		/// <summary>
@@ -101,8 +101,12 @@ namespace CircleRectTest
 			_inputState.Update();
 			_inputWrapper.Update(_inputState, false);
 
-			//move the circle
+			//MOVE THE CIRCLE
+
+			//This is VERY FAST movement to demonstrate that the circle will not tunnel out of the box's walls
+			//Set it to like 200 to see the thing actually move
 			float movespeed = 20000.0f;
+
 			if (_inputWrapper.Controller.CheckKeystroke(EKeystroke.Up, false, Vector2.UnitX))
 			{
 				_circle.Translate(0.0f, -movespeed * _clock.TimeDelta);
@@ -119,6 +123,8 @@ namespace CircleRectTest
 			{
 				_circle.Translate(-movespeed * _clock.TimeDelta, 0.0f);
 			}
+
+			//COLLISION REACTION
 
 			//put the circle back in the box?
 			Vector2 overlap = Vector2.Zero;

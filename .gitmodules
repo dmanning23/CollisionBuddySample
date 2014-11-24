@@ -19,3 +19,9 @@
 [submodule "externals/Filename"]
 	path = externals/Filename
 	url = git@github.com:dmanning23/Filename.git
+[submodule "externals/Vector2Extensions"]
+	path = externals/Vector2Extensions
+	url = git@github.com:dmanning23/Vector2Extensions.git
+[submodule "externals/RandomExtensions"]
+	path = externals/RandomExtensions
+	url = git@github.com:dmanning23/RandomExtensions.git
