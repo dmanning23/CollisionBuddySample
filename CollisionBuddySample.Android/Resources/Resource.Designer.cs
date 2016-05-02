@@ -34,6 +34,8 @@ namespace CollisionBuddySample.Android
 			global::GameTimer.Android.Resource.String.Hello = global::CollisionBuddySample.Android.Resource.String.Hello;
 			global::HadoukInput.Android.Resource.String.ApplicationName = global::CollisionBuddySample.Android.Resource.String.ApplicationName;
 			global::HadoukInput.Android.Resource.String.Hello = global::CollisionBuddySample.Android.Resource.String.Hello;
+			global::MatrixExtensions.Android.Resource.String.ApplicationName = global::CollisionBuddySample.Android.Resource.String.ApplicationName;
+			global::MatrixExtensions.Android.Resource.String.Hello = global::CollisionBuddySample.Android.Resource.String.Hello;
 			global::PrimitiveBuddy.Android.Resource.String.ApplicationName = global::CollisionBuddySample.Android.Resource.String.ApplicationName;
 			global::PrimitiveBuddy.Android.Resource.String.Hello = global::CollisionBuddySample.Android.Resource.String.Hello;
 			global::RandomExtensions.Android.Resource.String.ApplicationName = global::CollisionBuddySample.Android.Resource.String.ApplicationName;
