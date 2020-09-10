@@ -1,11 +1,10 @@
-using PrimitiveBuddy;
 using CollisionBuddy;
 using GameTimer;
 using HadoukInput;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using Vector2Extensions;
+using PrimitiveBuddy;
 
 namespace CollisionBuddySample
 {
@@ -46,8 +45,7 @@ namespace CollisionBuddySample
 
 			_clock = new GameClock();
 			_inputState = new InputState();
-			_inputWrapper = new InputWrapper(new ControllerWrapper(PlayerIndex.One, true), _clock.GetCurrentTime);
-			_inputWrapper.Controller.UseKeyboard = true;
+			_inputWrapper = new InputWrapper(new ControllerWrapper(0), _clock.GetCurrentTime);
 		}
 
 		/// <summary>
